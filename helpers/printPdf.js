@@ -1,7 +1,7 @@
 const puppeteer = require("puppeteer");
 
 const printPdf = async (url, token, basic, cookie) => {
-    const browser = await puppeteer.launch({ args: ["--no-sandbox", "--disable-setuid-sandbox"] });
+    const browser = await puppeteer.launch({ args: ['--disable-web-security', "--no-sandbox", "--disable-setuid-sandbox"] });
     const page = await browser.newPage();
     if (token && basic) {
         await page.setExtraHTTPHeaders({ Authorization: "Basic " + basic + ", Bearer " + token });
