@@ -11,7 +11,8 @@ const generatePdf = async (template, token, basic, cookie) => {
     }
     const content = fs.readFileSync(template, 'utf-8');
     await page.setContent(content);
-    const buffer = await page.pdf({
+    const config = await page.evaluate(() => window.pdfGeneratorConfig || {});
+    const options = {
         format: 'A4',
         printBackground: true,
         margin: {
@@ -20,7 +21,8 @@ const generatePdf = async (template, token, basic, cookie) => {
             right: '0px',
             bottom: '0px'
         }
-    });
+    };
+    const buffer = await page.pdf(!Object.keys(config).length ? options : config);
     await browser.close();
     return buffer;
 }
