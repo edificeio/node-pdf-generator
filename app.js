@@ -30,8 +30,10 @@ app.use(fileupload({
 
 app.use("/", indexRouter);
 
-app.listen(port, function () {
+const server = app.listen(port, function () {
   console.log('node-pdf-generator listening on port 3000')
-});
+}).setTimeout(30 * 60000).on('error', function(err) { 
+  console.error("[app] server failed:", err)
+})
 
 module.exports = app;

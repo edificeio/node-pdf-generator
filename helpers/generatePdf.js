@@ -22,8 +22,10 @@ const generatePdf = async (template, token, basic, cookie) => {
             bottom: '0px'
         }
     };
+    console.log(new Date(), "[generatePdf] start....")
     const buffer = await page.pdf(!Object.keys(config).length ? options : config);
     await browser.close();
+    console.log(new Date(), "[generatePdf] finished....")
     return buffer;
 }
 

@@ -12,8 +12,9 @@ router.post("/generate/pdf", async (req, res, __) => {
       res.status(400).end();
       return;
     }
-    console.log("[generatePdf] using token: ", req.body.token, " Auth: ", config.auth, "OneSessionId", req.cookies.oneSessionId)
+    console.log(new Date(), "[generatePdf] using token: ", req.body.token, " Auth: ", config.auth, "OneSessionId", req.cookies.oneSessionId)
     let result = await generatePdf(req.files.template.tempFilePath, req.body.token, config.auth, req.cookies.oneSessionId);
+    console.log(new Date(), "[generatePdf] pdf generated successfully token: ", req.body.token, " Auth: ", config.auth, "OneSessionId", req.cookies.oneSessionId)
     let name = req.body.name;
     if (!name) {
       name = "export";
@@ -33,8 +34,9 @@ router.post("/print/pdf", async (req, res, __) => {
       res.status(400).end();
       return;
     }
-    console.log("[printPdf] using token: ", req.body.token, " Auth: ", config.auth, "OneSessionId", req.cookies.oneSessionId, "from url: ",req.body.url)
+    console.log(new Date(), "[printPdf] using token: ", req.body.token, " Auth: ", config.auth, "OneSessionId", req.cookies.oneSessionId, "from url: ",req.body.url)
     let result = await printPdf(req.body.url, req.body.token, config.auth, req.cookies.oneSessionId);
+    console.log(new Date(), "[printPdf] pdf printed successfully token: ", req.body.token, " Auth: ", config.auth, "OneSessionId", req.cookies.oneSessionId, "from url: ",req.body.url)
     let name = req.body.name;
     if (!name) {
       name = "export";
