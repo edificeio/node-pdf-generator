@@ -10,7 +10,8 @@ const generatePdf = async (template, token, basic, cookie) => {
         await page.setExtraHTTPHeaders({ cookie: "oneSessionId=" + cookie });
     }
     const content = fs.readFileSync(template, 'utf-8');
-    await page.setContent(content);
+    page.setDefaultNavigationTimeout(0);     
+    await page.setContent(content, {timeout: 1800000, waitUntil:'domcontentloaded'});
     const config = await page.evaluate(() => window.pdfGeneratorConfig || {});
     const options = {
         format: 'A4',
