@@ -1,3 +1,7 @@
 {
-    "auth" : "ZXhwb3J0cGRmOnNlY3JldA=="
+    "auth": "ZXhwb3J0cGRmOnNlY3JldA==",
+    "domainWhitelist": [
+        "opendigitaleducation.com",
+        "*.opendigitaleducation.com"
+    ]
 }
