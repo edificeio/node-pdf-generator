@@ -39,7 +39,11 @@ async function pageWithInterceptor(page) {
       request.continue();
     } else {
       console.warn("[Interceptor] abort query:", request.url())
-      request.abort();
+      if(config.bypassWhitelist){
+        request.continue();
+      }else{
+        request.abort();
+      }
     }
   });
   return page;
