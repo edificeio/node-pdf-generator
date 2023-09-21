@@ -2,7 +2,7 @@ const puppeteer = require("puppeteer");
 const { pageWithInterceptor } = require("../commons/pageWithInterceptor");
 
 const printPdf = async (url, token, basic, cookie) => {
-    const browser = await puppeteer.launch({ args: ['--disable-web-security', "--no-sandbox", "--disable-setuid-sandbox"] });
+    const browser = await puppeteer.launch({ headless: 'old', args: ['--disable-web-security', "--no-sandbox", "--disable-setuid-sandbox"] });
     const page = await pageWithInterceptor(await browser.newPage());
     if (token && basic) {
         await page.setExtraHTTPHeaders({ Authorization: "Basic " + basic + ", Bearer " + token });

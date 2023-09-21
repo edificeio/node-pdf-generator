@@ -9,7 +9,7 @@
     "cookie-parser": "1.4.4",
     "express-fileupload": "1.1.5",
     "morgan": "1.9.1",
-    "puppeteer": "1.18.0"
+    "puppeteer": "21.3.1"
   },
   "devDependencies": {}
 }
