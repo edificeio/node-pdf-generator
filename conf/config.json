@@ -1,4 +1,5 @@
 {
+    "processTimeoutAsMin": "10",
     "auth": "ZXhwb3J0cGRmOnNlY3JldA==",
     "bypassWhitelist": true,
     "domainWhitelist": [
